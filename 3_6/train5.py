@@ -7,12 +7,11 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.datasets import make_regression
 from sklearn.model_selection import train_test_split
 
-X, y = make_regression(n_samples=200, n_features=1, noise=10, random_state=1)
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
+X_train = np.random.uniform(-6,6, size=(500,1))
+y_train = np.cos(X_train)
 
-regr = MLPRegressor(random_state=1, max_iter=500).fit(X_train, y_train)
-regr.predict(X_test[:2])
-regr.score(X_test, y_test)
+X_test = np.random.uniform(-6,6, size=(100,1))
+y_test = np.cos(X_test)
 
 NN4 = MLPRegressor(hidden_layer_sizes=[1000,200], activation='relu').fit(X_train, y_train.ravel())
 grid = np.linspace(-6,6,1000)
